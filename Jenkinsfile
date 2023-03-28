@@ -23,12 +23,14 @@ podTemplate(yaml: '''
                         chmod +x ./kubectl
                         ./kubectl apply -f calculator.yaml -n staging
                         ./kubectl apply -f hazelcast.yaml -n staging
+                        sleep 30
                             '''
                     }
                     stage('test calculator'){
                         sh '''
                           test $(curl -i calculator-service:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || echo 'fail'
-                          test $(curl -i calculator-service:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || fail '''
+                          test $(curl -i calculator-service:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || echo 'fail'   
+                          '''
                     } 
             }
       }
