@@ -29,7 +29,7 @@ podTemplate(yaml: '''
                         sh '''
                           test $(curl -i calculator-service:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || echo 'fail'
                           test $(curl -i calculator-service:8080/div?a=6\\&b=2) -eq 3 && echo 'pass' || echo 'fail'
-                        ''''
+                        '''
                     } 
             }
       }
