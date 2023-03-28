@@ -27,7 +27,7 @@ podTemplate(yaml: '''
                     }
                     stage('test calculator'){
                         sh '''
-                          test $(curl -i calculator-service.staging.svc.cluster.local:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || echo 'fail'
+                          test $(curl -i calculator-service:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || echo 'fail'
                           '''
                     } 
             }
